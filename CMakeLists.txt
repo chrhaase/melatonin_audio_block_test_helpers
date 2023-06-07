@@ -44,6 +44,6 @@ endif ()
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 
-juce_add_module("${CMAKE_CURRENT_LIST_DIR}")
+juce_add_module(melatonin_test_helpers)
 
 add_library(Melatonin::TestHelpers ALIAS melatonin_test_helpers)
