@@ -150,13 +150,13 @@ namespace melatonin
     static inline AudioBlock<SampleType>& fillBlockWithFunction (AudioBlock<SampleType>& block, const std::function<float (float)>& function, float frequency, float sampleRate, float gain = 1.0f, bool accumulate = false)
     {
         auto angleDelta = juce::MathConstants<float>::twoPi * frequency / sampleRate;
-        for (size_t c = 0; c < block.getNumChannels(); ++c)
+        for (int c = 0; c < (int) block.getNumChannels(); ++c)
         {
             auto currentAngle = 0.0f;
-            for (size_t i = 0; i < block.getNumSamples(); ++i)
+            for (int i = 0; i < (int) block.getNumSamples(); ++i)
             {
                 auto sampleValue = gain * function (currentAngle);
-                block.setSample ((int) c, (int) i, accumulate ? block.getSample (c, i) + gain + sampleValue : sampleValue);
+                block.setSample (c, i, accumulate ? block.getSample (c, i) + gain + sampleValue : sampleValue);
                 currentAngle += angleDelta;
                 if (currentAngle >= juce::MathConstants<float>::pi)
                     currentAngle -= juce::MathConstants<float>::twoPi;
