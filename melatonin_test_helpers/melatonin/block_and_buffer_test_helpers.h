@@ -473,10 +473,10 @@ namespace melatonin
         }
 
         // Print the histogram
-        for (auto i = 0; i < numBins; ++i)
+        for (size_t i = 0; i < numBins; ++i)
         {
             std::cout << "[" << rangeStart + i * binSize << ", " << rangeStart + (i + 1) * binSize << "): ";
-            for (auto j = 0; j < histogram[i]; ++j)
+            for (size_t j = 0; j < histogram[i]; ++j)
                 std::cout << "|";
             std::cout << std::endl;
         }
