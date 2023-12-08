@@ -36,7 +36,7 @@ namespace melatonin
 
         void advancePosition (size_t numSamples)
         {
-            auto samplesPerBeat = 44100.f * 60.f / info.getBpm().orFallback (120.f);
+            auto samplesPerBeat = (float) sampleRate * 60.f / info.getBpm().orFallback (120.f);
             info.setPpqPosition (info.getPpqPosition().orFallback(0) + (float) numSamples / samplesPerBeat);
         }
 
